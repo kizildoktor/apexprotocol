@@ -1,0 +1,45 @@
+@use '../styles/mixins';
+
+@font-face 
+{
+    font-family: Montserrat;
+    src: url(../public/fonts/Montserrat-Medium.ttf);
+}
+
+::-webkit-scrollbar
+{
+    display: none;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body
+{
+    overflow-x: clip;
+    font-family: Montserrat-Medium;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+img,
+svg
+{
+    display: block;
+}
+
+a, 
+button
+{
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}

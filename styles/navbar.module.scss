@@ -1,0 +1,134 @@
+@use '../styles/mixins';
+@use "sass:color";
+
+.dark a,
+.dark button
+{
+    color: black;
+}
+
+.bright a, 
+.bright button
+{
+    color: white;
+}
+
+.darkBG a
+{
+    background-image: url('../public/images/navbar/logo_black.png');
+}
+
+.brightBG a
+{
+    background-image: url('../public/images/navbar/logo_white.png');
+}
+
+.navbarContainer
+{
+    @include mixins.flex-center(row);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 3.5rem;
+    z-index: 10;
+    padding: 0 6rem;
+    justify-content: space-between;
+
+    ul
+    {
+        @include mixins.flex-center(row);
+        height: 100%;
+        gap: 1rem;
+
+        a
+        {
+            padding: .4rem;
+            border-radius: .4rem;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color .2s ease, background-color .2s ease;
+
+            // &:nth-child(5), 
+            // &:nth-child(6)
+            // {
+            //     pointer-events: none;
+            //     opacity: .5;
+            // }
+
+            &:hover
+            {
+                color: white;
+                background-color: black;
+            }
+        }
+
+        button
+        {
+            background-color: transparent;
+            border: 0;
+            padding: .4rem;
+            font-size: 1rem;
+            border-radius: .4rem;
+            transition: color .2s ease, background-color .2s ease;
+
+            &:hover
+            {
+                color: white;
+                background-color: black;
+            }
+        }
+
+        &:first-child a
+        {
+            height: 2rem;
+            aspect-ratio: 1/1;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+
+            &:hover
+            {
+                background-color: transparent;
+            }
+        }
+
+        &:first-child,
+        &:last-child
+        {
+            width: 192px;
+        }
+    }
+}
+
+@media (max-width: 1024px)
+{
+    .navbarContainer
+    {
+        display: none;
+        height: 2rem;
+        padding: 0;
+        justify-content: space-evenly;
+
+        ul
+        {
+            gap: 0;
+            width: fit-content;
+
+            a, button
+            {
+                font-size: .5rem;
+            }
+    
+            &:first-child a
+            {
+                height: 1rem;
+            }
+
+            &:first-child,
+            &:last-child
+            {
+                width: fit-content;
+            }
+        }
+    }
+}

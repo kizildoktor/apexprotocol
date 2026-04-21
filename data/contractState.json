@@ -1,0 +1,15 @@
+{
+    "stateData":
+    [
+        "owner", 
+        "maxSupply", 
+        "totalSupply", 
+        "whitelistMintLimit", 
+        "publicMintLimit", 
+        "whitelistMintPrice", 
+        "publicMintPrice", 
+        "whitelistMintState", 
+        "publicMintState", 
+        "tradingState"
+    ]
+}

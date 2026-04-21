@@ -1,0 +1,243 @@
+//MIXINS
+
+@use '../styles/mixins';
+
+//FONTS
+
+@font-face 
+{
+    font-family: Montserrat-Medium;
+    src: url(../public/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face 
+{
+    font-family: Montserrat-Black;
+    src: url(../public/fonts/Montserrat-Black.ttf);
+}
+
+@font-face 
+{
+    font-family: BebasNeue-Regular;
+    src: url(../public/fonts/BebasNeue-Regular.ttf);
+}
+
+//STYLING
+
+.aboutPage
+{
+    --h2-font-size: 2rem;
+    --p-font-size: 1rem;
+
+    display: flex;
+    flex-direction: row;
+
+    padding-top: 50px;
+
+    max-width: 1800px;
+    width: 85vw;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    margin: 0 auto;
+    margin-top: 3.5rem;
+    scroll-margin-top: 3.5rem;
+
+    section
+    {
+        max-height: 800px;
+        overflow-y: clip;
+    }
+
+    .aboutSectionLeft
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        max-width: 1000px;
+        width: 100%;
+
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-right: 1px solid rgba(0, 0, 0, 0.25);
+
+        div
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 2rem;
+
+            h2
+            {
+                font-size: var(--h2-font-size);
+                font-family: Montserrat-Black;
+                text-align: center;
+                max-width: 75%;
+            }
+    
+            p
+            {
+                font-size: var(--p-font-size);
+                font-family: Montserrat-Medium;
+                text-align: center;
+                max-width: 75%;
+            }
+    
+            img
+            {
+                margin-top: 2rem;
+                display: flex;
+                width: 50%;
+                height: auto;
+            }
+        }
+    }
+
+    .aboutSectionRight
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+
+        max-width: 800px;
+        width: 100%;
+
+        padding: 10px;
+        overflow: clip;
+
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+
+        transition: max-width 1s ease;
+            
+        &:hover
+        {
+            max-width: 1200px;
+        }
+
+        div
+        {
+            max-width: fit-content;
+            width: 100%;
+            
+            display: flex;
+            flex-direction: row;
+            
+            filter: url(#round);
+        
+            img
+            {
+                max-width: 250px;
+                height: auto;
+
+                margin: 10px 15px;                    
+                border-radius: 5px;
+
+                filter: grayscale(1);
+
+                transform-style: preserve-3d;
+                transform: 
+                    perspective(1000px)
+                    rotateX(var(--rotateAboutImageX))
+                    rotateY(var(--rotateAboutImageY));
+                
+                clip-path: polygon(
+                    5% 0, 100% 0, 100% 90%, 90% 100%, 
+                    0 100%, 0 57%, 5% 44%);
+
+                transition: 
+                    transform .1s,
+                    scale .25s, 
+                    filter .25s;
+            
+                &:hover
+                {
+                    scale: 110%;
+                    filter: grayscale(0);
+                }
+
+                &:nth-child(n+2):nth-child(-n+4)
+                {
+                    filter: grayscale(1) blur(11px);
+                }
+            }
+
+            &:nth-child(3)
+            {
+                margin-left: 75px;
+            }
+        }
+    }
+}
+
+//MOBILE
+@media (max-width: 1024px) 
+{
+    .aboutPage
+    {
+        margin-top: 2rem;
+
+        --h2-font-size: 2rem;
+        --p-font-size: 1rem;
+
+        flex-direction: column;
+        align-items: center;
+
+        section
+        {
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        .aboutSectionLeft
+        {
+            border-right: 0;
+
+            div
+            {
+                gap: 1rem;
+                padding: 1rem;
+
+                h2, p
+                {
+                    max-width: 100%;
+                }
+
+                img
+                {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .aboutSectionRight
+        {
+            overflow-x: hidden;
+            max-width: 1100px;
+
+            div
+            {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                -ms-overflow-style: none;
+                flex-wrap: nowrap;
+
+                img 
+                {
+                    max-width: 200px;
+                }
+
+                &:nth-child(3)
+                {
+                    margin-left: 50px;
+                }
+            }
+        }
+    }
+}
